@@ -7,13 +7,43 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UICollectionViewController {
+    
+    let url = "https://zoo-animal-api.herokuapp.com/animals/rand/3"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        getAnimal()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "animalButtonCell", for: indexPath) as? AnimalActionCell else { return UICollectionViewCell() }
+        return cell
     }
 
-
+    
 }
 
+extension MainViewController {
+    private func getAnimal() {
+        guard let url = URL(string: url) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No error Description")
+                return
+            }
+            
+            do {
+                let animals = try JSONDecoder().decode([Animal].self, from: data)
+                print(animals)
+            } catch let error {
+                print(error)
+            }
+        }.resume()
+    }
+}

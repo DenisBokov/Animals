@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Animal {
+struct Animal: Decodable {
     let name: String
     let latin_name: String
     let animal_type: String
     let active_time: String
-    let length_min: Double
-    let length_max: Double
-    let weight_min: Double
-    let weight_max: Double
-    let lifespan: Double
+    let length_min: String
+    let length_max: String
+    let weight_min: String
+    let weight_max: String
+    let lifespan: String
     let habitat: String
     let diet: String
     let geo_range: String
