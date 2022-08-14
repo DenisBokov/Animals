@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class MainViewController: UICollectionViewController {
     
     let url = "https://zoo-animal-api.herokuapp.com/animals/rand/3"
@@ -24,20 +26,16 @@ class MainViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "animalButtonCell", for: indexPath) as? AnimalActionCell else { return UICollectionViewCell() }
         
-        cell.nameAnimalLebal.text = animals[indexPath.item].name
+        let animal = animals[indexPath.item]
+        cell.configure(with: animal)
+        
         return cell
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let infoAnimalVC = segue.destination as? InfoAboutAnimalViewController else { return }
-        infoAnimalVC.fetchAnimal()
-    }
-    
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width - 48, height: 100)
+        CGSize(width: UIScreen.main.bounds.width - 48, height: 400)
     }
 }
 
@@ -53,7 +51,6 @@ extension MainViewController {
             
             do {
                 self?.animals = try JSONDecoder().decode([Animal].self, from: data)
-                print(self?.animals ?? "")
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
