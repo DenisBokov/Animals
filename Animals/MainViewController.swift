@@ -11,7 +11,7 @@ import UIKit
 
 class MainViewController: UICollectionViewController {
     
-    let url = "https://zoo-animal-api.herokuapp.com/animals/rand/3"
+    let url = "https://zoo-animal-api.herokuapp.com/animals/rand/10"
     private var animals: [Animal] = []
 
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ class MainViewController: UICollectionViewController {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width - 48, height: 400)
+        CGSize(width: UIScreen.main.bounds.width - 48, height: 500)
     }
 }
 
@@ -50,7 +50,9 @@ extension MainViewController {
             }
             
             do {
-                self?.animals = try JSONDecoder().decode([Animal].self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                self?.animals = try decoder.decode([Animal].self, from: data)
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
