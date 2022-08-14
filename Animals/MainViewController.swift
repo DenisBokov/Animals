@@ -35,31 +35,20 @@ class MainViewController: UICollectionViewController {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width - 48, height: 500)
+        CGSize(width: UIScreen.main.bounds.width - 48, height: 250)
     }
 }
 
 extension MainViewController {
     private func getAnimal() {
-        guard let url = URL(string: url) else { return }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error Description")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                self?.animals = try decoder.decode([Animal].self, from: data)
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-                
-            } catch let error {
+        NetworkManager.shared.fetch([Animal].self, from: url) { [weak self] result in
+            switch result {
+            case .success(let animals):
+                self?.animals = animals
+                self?.collectionView.reloadData()
+            case .failure(let error):
                 print(error)
             }
-        }.resume()
+        }
     }
 }

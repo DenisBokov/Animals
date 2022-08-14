@@ -33,4 +33,28 @@ class NetworkManager {
             }
         }
     }
+    
+    func fetch<T: Decodable>(_ type: T.Type, from url: String, comlition: @escaping(Result<T, NetworkError>) -> Void) {
+        guard let url = URL(string: url) else {
+            comlition(.failure(.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                comlition(.failure(.noData))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let type = try decoder.decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    comlition(.success(type))
+                }
+            } catch {
+                comlition(.failure(.decodingError))
+            }
+        }.resume()
+    }
 }
