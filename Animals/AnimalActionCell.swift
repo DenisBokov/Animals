@@ -8,6 +8,7 @@
 import UIKit
 
 class AnimalActionCell: UICollectionViewCell {
+    
     @IBOutlet var nameAnimalLebal: UILabel!
     @IBOutlet var imageAnimalView: UIImageView!
     @IBOutlet var activityIndView: UIActivityIndicatorView!
@@ -15,11 +16,16 @@ class AnimalActionCell: UICollectionViewCell {
     func configure(with animal: Animal) {
         nameAnimalLebal.text = animal.name
         
-        guard let url = URL(string: animal.imageLink) else { return }
-        DispatchQueue.global().async { [weak self] in
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
+        activityIndView.startAnimating()
+        activityIndView.hidesWhenStopped = true
+        
+        NetworkManager.shared.fetchAnimalImage(from: animal.imageLink) { [weak self] result in
+            switch result {
+            case .success(let imageData):
                 self?.imageAnimalView.image = UIImage(data: imageData)
+                self?.activityIndView.stopAnimating()
+            case .failure(let error):
+                print(error)
             }
         }
     }

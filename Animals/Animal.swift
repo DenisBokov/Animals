@@ -21,4 +21,8 @@ struct Animal: Decodable {
     let diet: String
     let geoRange: String
     let imageLink: String
+    
+    var urlAdress: String {
+        "https://zoo-animal-api.herokuapp.com/animals/rand/10"
+    }
 }
