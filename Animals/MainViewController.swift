@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UICollectionViewController {
     
     let url = "https://zoo-animal-api.herokuapp.com/animals/rand/3"
+    private var animals: [Animal] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +18,13 @@ class MainViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return animals.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "animalButtonCell", for: indexPath) as? AnimalActionCell else { return UICollectionViewCell() }
+        
+        cell.nameAnimalLebal.text = animals[indexPath.item].name
         return cell
     }
 
@@ -42,18 +45,19 @@ extension MainViewController {
     private func getAnimal() {
         guard let url = URL(string: url) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error Description")
                 return
             }
             
             do {
-                let animals = try JSONDecoder().decode([Animal].self, from: data)
-                
-                animals.forEach { animal in
-                    print(animal.name)
+                self?.animals = try JSONDecoder().decode([Animal].self, from: data)
+                print(self?.animals ?? "")
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
                 }
+                
             } catch let error {
                 print(error)
             }

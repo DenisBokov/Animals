@@ -8,6 +8,5 @@
 import UIKit
 
 class AnimalActionCell: UICollectionViewCell {
-    
     @IBOutlet var nameAnimalLebal: UILabel!
 }
