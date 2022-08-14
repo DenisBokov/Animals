@@ -25,7 +25,17 @@ class MainViewController: UICollectionViewController {
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let infoAnimalVC = segue.destination as? InfoAboutAnimalViewController else { return }
+        infoAnimalVC.fetchAnimal()
+    }
     
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: UIScreen.main.bounds.width - 48, height: 100)
+    }
 }
 
 extension MainViewController {
@@ -40,7 +50,10 @@ extension MainViewController {
             
             do {
                 let animals = try JSONDecoder().decode([Animal].self, from: data)
-                print(animals)
+                
+                animals.forEach { animal in
+                    print(animal.name)
+                }
             } catch let error {
                 print(error)
             }
