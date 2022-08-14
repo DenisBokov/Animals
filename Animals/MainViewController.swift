@@ -8,10 +8,10 @@
 import UIKit
 
 
-
+ 
 class MainViewController: UICollectionViewController {
     
-    let url = "https://zoo-animal-api.herokuapp.com/animals/rand/10"
+    private let url = "https://zoo-animal-api.herokuapp.com/animals/rand/10"
     private var animals: [Animal] = []
 
     override func viewDidLoad() {
