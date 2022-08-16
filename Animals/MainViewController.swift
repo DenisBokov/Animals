@@ -31,6 +31,13 @@ class MainViewController: UICollectionViewController {
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
+        let animal = animals[indexPath.row]
+        guard let infoAnimalVC = segue.destination as? InfoAnimalViewController else { return }
+        infoAnimalVC.animal = animal
+    }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {

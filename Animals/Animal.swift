@@ -25,4 +25,20 @@ struct Animal: Decodable {
     var urlAdress: String {
         "https://zoo-animal-api.herokuapp.com/animals/rand/10"
     }
+    
+    var description: String {
+        """
+    Latin Name: \(latinName)
+    Animal Type: \(animalType)
+    Active Time: \(activeTime)
+    Length Min: \(lengthMin)
+    Length Max: \(lengthMax)
+    Weigth Min: \(weightMin)
+    Weigth Max: \(weightMax)
+    Life Span: \(lifespan)
+    Habitat: \(habitat)
+    Diet: \(diet)
+    Geo Range: \(geoRange)
+    """
+    }
 }
