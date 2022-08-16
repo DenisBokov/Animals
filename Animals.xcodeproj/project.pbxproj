@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EF7649F928AB8B2C000EE800 /* InfoAnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7649F828AB8B2C000EE800 /* InfoAnimalViewController.swift */; };
+		EF7649FC28ABB678000EE800 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EF7649FB28ABB678000EE800 /* Alamofire */; };
+		EF7649FE28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7649FD28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift */; };
 		EF7F684028A840C100BF5113 /* AnimalActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7F683F28A840C100BF5113 /* AnimalActionCell.swift */; };
 		EF7F684428A94E5E00BF5113 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7F684328A94E5E00BF5113 /* NetworkManager.swift */; };
 		EFA8798728A66E6100B67C90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA8798628A66E6100B67C90 /* AppDelegate.swift */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		EF7649F828AB8B2C000EE800 /* InfoAnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAnimalViewController.swift; sourceTree = "<group>"; };
+		EF7649FD28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerWithAlamofire.swift; sourceTree = "<group>"; };
 		EF7F683F28A840C100BF5113 /* AnimalActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalActionCell.swift; sourceTree = "<group>"; };
 		EF7F684328A94E5E00BF5113 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EFA8798328A66E6100B67C90 /* Animals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animals.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF7649FC28ABB678000EE800 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,7 @@
 				EF7649F828AB8B2C000EE800 /* InfoAnimalViewController.swift */,
 				EF7F683F28A840C100BF5113 /* AnimalActionCell.swift */,
 				EF7F684328A94E5E00BF5113 /* NetworkManager.swift */,
+				EF7649FD28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift */,
 				EFA8799A28A6784D00B67C90 /* Animal.swift */,
 				EFA8798F28A66E6100B67C90 /* Assets.xcassets */,
 				EFA8799128A66E6100B67C90 /* LaunchScreen.storyboard */,
@@ -95,6 +100,9 @@
 			dependencies = (
 			);
 			name = Animals;
+			packageProductDependencies = (
+				EF7649FB28ABB678000EE800 /* Alamofire */,
+			);
 			productName = Animals;
 			productReference = EFA8798328A66E6100B67C90 /* Animals.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +131,9 @@
 				Base,
 			);
 			mainGroup = EFA8797A28A66E6100B67C90;
+			packageReferences = (
+				EF7649FA28ABB678000EE800 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = EFA8798428A66E6100B67C90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -157,6 +168,7 @@
 				EFA8798728A66E6100B67C90 /* AppDelegate.swift in Sources */,
 				EF7649F928AB8B2C000EE800 /* InfoAnimalViewController.swift in Sources */,
 				EFA8798928A66E6100B67C90 /* SceneDelegate.swift in Sources */,
+				EF7649FE28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF7649FA28ABB678000EE800 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF7649FB28ABB678000EE800 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF7649FA28ABB678000EE800 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EFA8797B28A66E6100B67C90 /* Project object */;
 }

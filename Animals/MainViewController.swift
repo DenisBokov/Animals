@@ -11,7 +11,6 @@ import UIKit
  
 class MainViewController: UICollectionViewController {
     
-    private let url = "https://zoo-animal-api.herokuapp.com/animals/rand/10"
     private var animals: [Animal] = []
 
     override func viewDidLoad() {
@@ -48,7 +47,17 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController {
     private func getAnimal() {
-        NetworkManager.shared.fetch([Animal].self, from: url) { [weak self] result in
+//        NetworkManager.shared.fetch([Animal].self, from: URLAPI.url.rawValue) { [weak self] result in
+//            switch result {
+//            case .success(let animals):
+//                self?.animals = animals
+//                self?.collectionView.reloadData()
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        
+        NetworkManagerWithAlamofire.shared.fetchAnimals(from: Link.url.rawValue) { [weak self] result in
             switch result {
             case .success(let animals):
                 self?.animals = animals
