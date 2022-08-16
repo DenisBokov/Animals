@@ -19,17 +19,7 @@ class AnimalActionCell: UICollectionViewCell {
         activityIndView.startAnimating()
         activityIndView.hidesWhenStopped = true
         
-//        NetworkManager.shared.fetchAnimalImage(from: animal.imageLink) { [weak self] result in
-//            switch result {
-//            case .success(let imageData):
-//                self?.imageAnimalView.image = UIImage(data: imageData)
-//                self?.activityIndView.stopAnimating()
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        NetworkManagerWithAlamofire.shared.fetchData(from: animal.imageLink) { [weak self] result in
+        NetworkManager.shared.fetchAnimalImage(from: animal.imageLink) { [weak self] result in
             switch result {
             case .success(let imageData):
                 self?.imageAnimalView.image = UIImage(data: imageData)
@@ -38,5 +28,15 @@ class AnimalActionCell: UICollectionViewCell {
                 print(error)
             }
         }
+        
+//        NetworkManagerWithAlamofire.shared.fetchData(from: animal.imageLink) { [weak self] result in
+//            switch result {
+//            case .success(let imageData):
+//                self?.imageAnimalView.image = UIImage(data: imageData)
+//                self?.activityIndView.stopAnimating()
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }

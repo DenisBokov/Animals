@@ -64,21 +64,21 @@ struct Animal: Decodable {
         return animals
     }
     
-    enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case latinName = "latin_name"
-        case animalType = "animal_type"
-        case activeTime = "active_time"
-        case lengthMin = "length_min"
-        case lengthMax = "length_max"
-        case weightMin = "weight_min"
-        case weightMax = "weight_max"
-        case lifespan = "lifespan"
-        case habitat = "habitat"
-        case diet = "diet"
-        case geoRange = "geo_range"
-        case imageLink = "image_link"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case name = "name"
+//        case latinName = "latin_name"
+//        case animalType = "animal_type"
+//        case activeTime = "active_time"
+//        case lengthMin = "length_min"
+//        case lengthMax = "length_max"
+//        case weightMin = "weight_min"
+//        case weightMax = "weight_max"
+//        case lifespan = "lifespan"
+//        case habitat = "habitat"
+//        case diet = "diet"
+//        case geoRange = "geo_range"
+//        case imageLink = "image_link"
+//    }
 }
 
 enum Link: String {

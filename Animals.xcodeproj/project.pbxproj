@@ -49,6 +49,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF7649FF28AC11C5000EE800 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8799A28A6784D00B67C90 /* Animal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF764A0028AC11D5000EE800 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8798A28A66E6100B67C90 /* MainViewController.swift */,
+				EF7649F828AB8B2C000EE800 /* InfoAnimalViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EF764A0128AC11F3000EE800 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF7F683F28A840C100BF5113 /* AnimalActionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF764A0228AC1212000EE800 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EF7649FD28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift */,
+				EF7F684328A94E5E00BF5113 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EF764A0328AC1237000EE800 /* SupporthingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8798828A66E6100B67C90 /* SceneDelegate.swift */,
+				EFA8798628A66E6100B67C90 /* AppDelegate.swift */,
+				EFA8799428A66E6100B67C90 /* Info.plist */,
+			);
+			path = SupporthingFiles;
+			sourceTree = "<group>";
+		};
+		EF764A0428AC125C000EE800 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8799128A66E6100B67C90 /* LaunchScreen.storyboard */,
+				EFA8798C28A66E6100B67C90 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EF764A0528AC1272000EE800 /* Sourse */ = {
+			isa = PBXGroup;
+			children = (
+				EFA8798F28A66E6100B67C90 /* Assets.xcassets */,
+			);
+			path = Sourse;
+			sourceTree = "<group>";
+		};
 		EFA8797A28A66E6100B67C90 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +129,13 @@
 		EFA8798528A66E6100B67C90 /* Animals */ = {
 			isa = PBXGroup;
 			children = (
-				EFA8798628A66E6100B67C90 /* AppDelegate.swift */,
-				EFA8798828A66E6100B67C90 /* SceneDelegate.swift */,
-				EFA8798A28A66E6100B67C90 /* MainViewController.swift */,
-				EFA8798C28A66E6100B67C90 /* Main.storyboard */,
-				EF7649F828AB8B2C000EE800 /* InfoAnimalViewController.swift */,
-				EF7F683F28A840C100BF5113 /* AnimalActionCell.swift */,
-				EF7F684328A94E5E00BF5113 /* NetworkManager.swift */,
-				EF7649FD28ABEDAE000EE800 /* NetworkManagerWithAlamofire.swift */,
-				EFA8799A28A6784D00B67C90 /* Animal.swift */,
-				EFA8798F28A66E6100B67C90 /* Assets.xcassets */,
-				EFA8799128A66E6100B67C90 /* LaunchScreen.storyboard */,
-				EFA8799428A66E6100B67C90 /* Info.plist */,
+				EF764A0528AC1272000EE800 /* Sourse */,
+				EF764A0428AC125C000EE800 /* Storyboards */,
+				EF764A0328AC1237000EE800 /* SupporthingFiles */,
+				EF764A0228AC1212000EE800 /* Services */,
+				EF764A0128AC11F3000EE800 /* Views */,
+				EF764A0028AC11D5000EE800 /* ViewControllers */,
+				EF7649FF28AC11C5000EE800 /* Models */,
 			);
 			path = Animals;
 			sourceTree = "<group>";
@@ -317,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL6Q59VDPK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Animals/Info.plist;
+				INFOPLIST_FILE = Animals/SupporthingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -345,7 +401,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL6Q59VDPK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Animals/Info.plist;
+				INFOPLIST_FILE = Animals/SupporthingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
